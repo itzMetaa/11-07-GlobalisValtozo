@@ -32,9 +32,9 @@ public class SecondActivity extends AppCompatActivity{
         txtViewSecond = findViewById(R.id.txtViewSecond);
 
         SharedPreferences sharedPreferences = getSharedPreferences("Adatok", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        
-        txtViewSecond.setText();
+        String seged = "";
+        seged = sharedPreferences.getString("nev","nincs adat");
+        txtViewSecond.setText(seged);
 
     }
 }
