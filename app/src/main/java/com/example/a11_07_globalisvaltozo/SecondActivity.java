@@ -2,13 +2,17 @@ package com.example.a11_07_globalisvaltozo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
-public class SecondActivity extends AppCompatActivity implements View.OnClickListener{
+public class SecondActivity extends AppCompatActivity{
 
+    TextView txtViewSecond;
     Button btnGoBack;
 
     @Override
@@ -16,17 +20,21 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
         init();
-        btnGoBack.setOnClickListener(this);
+        btnGoBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
     private void init(){
         btnGoBack = findViewById(R.id.btnGoBack);
-    }
+        txtViewSecond = findViewById(R.id.txtViewSecond);
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.btnGoBack:
-                finish();
-        }
+        SharedPreferences sharedPreferences = getSharedPreferences("Adatok", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        
+        txtViewSecond.setText();
+
     }
 }

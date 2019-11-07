@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity{
 
     private Button btnLaunch2ndActivity;
     private EditText editText;
@@ -26,8 +26,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 SharedPreferences sharedPreferences = getSharedPreferences("Adatok", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("nev",editText.getText().toString());
+                editor.apply();
 
-                Intent intent = new Intent(this, SecondActivity.class);
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                 startActivity(intent);
             }
         });
